@@ -25,15 +25,16 @@ namespace constoso.blobtrigger
         static HttpClient client = new HttpClient();
 
         [FunctionName("NewBlobTrigger")]
-        public void Run([BlobTrigger("sftphome/{name}", Connection = "videlasftpdemo_STORAGE")]Stream myBlob, string name, ILogger log)
+        public void Run([BlobTrigger("sftphome/{name}", Connection = "STORAGE_CONNECTION")]Stream myBlob, string name, ILogger log)
         {
             log.LogInformation($"C# Blob trigger function Processed blob\n Name:{name} \n Size: {myBlob.Length} Bytes");
 
             CFDI product = new CFDI
             {
+                //Parsing simple para encontrar la ruta a los archivos
                 Name = name.Split("/")[1],
                 Date = name.Split("/")[0],
-                Path = "https://videlasftpdemo.blob.core.windows.net/sftphome/"+name
+                Path = "https://videlasftpdemo.blob.core.windows.net/sftphome/"+name //Cambiar el Path por el path adecuado del ejercicio
             };
 
             //Código para invocar API de actualización de base de datos
