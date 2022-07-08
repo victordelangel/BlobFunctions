@@ -39,9 +39,12 @@ namespace contoso.movefilestoblob
 
         private static void AzureStorageAccountBlob(ILogger log)
         {
-            string connectionString = "DefaultEndpointsProtocol=https;AccountName=videlasftpdemo;AccountKey=DZgsKuIEFhg2o16XF5okMvWrvbO5rOCpP5KStYUGF9Bta4PtQRKD62zp91PJsIr49UyNKmrh1A+0+ASt4zgMlg==;EndpointSuffix=core.windows.net";
+            //Colocar connection String
+            string connectionString = "";
             //share que vamos a buscar
+            //En este caso corresponde al folder compartido por Azure Files
             string sharename ="demoshare";
+            //Directorio compartido por Azure Files
             string directory = "demodirectory";
             
             //Blob destino
